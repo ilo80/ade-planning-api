@@ -1,1 +1,1 @@
-export type { Credentials } from "./credential";
+export type { Credentials } from "./credentials";
