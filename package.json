@@ -6,10 +6,20 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["adesoft", "ade", "planning", "api", "wrapper"],
+  "keywords": [
+    "adesoft",
+    "ade",
+    "planning",
+    "api",
+    "wrapper"
+  ],
   "author": "ilo80",
   "license": "GPL-3.0-only",
   "devDependencies": {
     "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "@types/xml2js": "^0.4.14",
+    "xml2js": "^0.6.2"
   }
 }
