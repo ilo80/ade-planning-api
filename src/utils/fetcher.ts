@@ -73,7 +73,7 @@ export class ADEFetcher implements Fetcher {
             throw new Error("Session token not found.");
         }
 
-        const queryString = (new URLSearchParams({ ...(params || {}), sessionId: this.sessionToken })).toString();
+        const queryString = (new URLSearchParams({ ...(params || {}), sessionId: this.sessionToken })).toString(); // Add params and session token to the query string
 
         const response = await fetch(`${this.apiUrl}?${queryString}`, {
             method: "GET",
