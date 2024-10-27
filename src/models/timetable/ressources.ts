@@ -1,24 +1,24 @@
 import { Color } from "../utils/color";
 
-export interface Cost { 
+interface Cost { 
     id: number;
     name: string;
     value: number;
 }
 
-export interface Costs {
+interface Costs {
     costs: Cost[];
 }
 
-export interface Caracteristics {} // Don't know what to put here yet
+interface Caracteristics {} // Don't know what to put here yet
 
-export interface Counters {
+interface Counters {
     isUseCounter: boolean;
 }
 
-export interface SetupTimes {} // Don't know what to put here yet
+interface SetupTimes {} // Don't know what to put here yet
 
-export interface Constraints {
+interface Constraints {
     quality: number;
     distribution: number;
     costs: Costs;
@@ -27,11 +27,11 @@ export interface Constraints {
     setupTimes?: SetupTimes;
 }
 
-export interface AllMembers {} // Don't know what to put here yet
+interface AllMembers {} // Don't know what to put here yet
 
-export interface Memberships {} // Don't know what to put here yet
+interface Memberships {} // Don't know what to put here yet
 
-export interface Rights {
+interface Rights {
     otherRights: string;
     groupRights: string;
     userRights: string;
