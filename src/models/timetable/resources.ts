@@ -1,45 +1,5 @@
 import { Color } from "../utils/color";
 
-interface Cost { 
-    id: number;
-    name: string;
-    value: number;
-}
-
-interface Costs {
-    costs: Cost[];
-}
-
-interface Caracteristics {} // Don't know what to put here yet
-
-interface Counters {
-    isUseCounter: boolean;
-}
-
-interface SetupTimes {} // Don't know what to put here yet
-
-interface Constraints {
-    quality: number;
-    distribution: number;
-    costs: Costs;
-    caracteristics?: Caracteristics;
-    counters: Counters;
-    setupTimes?: SetupTimes;
-}
-
-interface AllMembers {} // Don't know what to put here yet
-
-interface Memberships {} // Don't know what to put here yet
-
-interface Rights {
-    otherRights: string;
-    groupRights: string;
-    userRights: string;
-    group: string;
-    profileName: string;
-    profileId: number;
-} 
-
 // Interface for a single resource
 // TODO: Investigate the meaning of all the fields
 export interface Resource {
@@ -94,3 +54,44 @@ export interface Resource {
 export interface Resources {
     ressources: Resource[]; 
 }
+
+interface Cost { 
+    id: number;
+    name: string;
+    value: number;
+}
+
+interface Costs {
+    costs: Cost[];
+}
+
+interface Caracteristics {} // Don't know what to put here yet
+
+interface Counters {
+    isUseCounter: boolean;
+}
+
+interface SetupTimes {} // Don't know what to put here yet
+
+interface Constraints {
+    quality: number;
+    distribution: number;
+    costs: Costs;
+    caracteristics?: Caracteristics;
+    counters: Counters;
+    setupTimes?: SetupTimes;
+}
+
+interface AllMembers {} // Don't know what to put here yet
+
+interface Memberships {} // Don't know what to put here yet
+
+interface Rights {
+    otherRights: string;
+    groupRights: string;
+    userRights: string;
+    group: string;
+    profileName: string;
+    profileId: number;
+} 
+
