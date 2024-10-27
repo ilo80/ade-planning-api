@@ -1,4 +1,5 @@
 import { Color } from "../utils/color";
+import { Resources } from "./resources";
 
 export interface Event {
     id: number;
@@ -29,20 +30,6 @@ export interface Event {
 
 export interface Events {
     events: Event[];
-}
-
-interface Resources {
-    resources: Resource[];
-}
-
-interface Resource {
-    fromWorkflow: boolean;
-    nodeId: number;
-    nodeOrId: number;
-    quantity: number;
-    category: string;
-    name: string;
-    id: number;
 }
 
 interface Additional {} // Don't know what to put here yet

@@ -48,6 +48,9 @@ export interface Resource {
     color: Color;
     levelAccess: string;
     owner: string;
+    fromWorkflow?: boolean;
+    nodeId?: number;
+    nodeOrId?: number;
     allMembers: AllMembers;
     memberships: Memberships;
     constraints: Constraints;
