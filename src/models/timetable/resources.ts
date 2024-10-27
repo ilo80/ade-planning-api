@@ -1,4 +1,4 @@
-import { Color } from "../utils/color";
+import { Color } from "../utils";
 import { AllMembers, Memberships } from "./members";
 import { Constraints } from "./constraints";
 import { Rights } from "./rights";
@@ -9,7 +9,7 @@ export interface Resource {
     id: number;
     name: string;
     path: string;
-    category: string; // TODO: Specify all possible values. e.g. "trainee", etc..
+    category: string;
     isGroup: boolean;
     type: string;
     email: string;

@@ -1,4 +1,4 @@
-import { Color } from "../utils/color";
+import { Color } from "../utils";
 import { Events } from "./events";
 import { Resources } from "./resources";
 import { Rights } from "./rights";

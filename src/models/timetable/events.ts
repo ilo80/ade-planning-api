@@ -1,4 +1,4 @@
-import { Color } from "../utils/color";
+import { Color } from "../utils";
 import { Resources } from "./resources";
 
 export interface Event {
