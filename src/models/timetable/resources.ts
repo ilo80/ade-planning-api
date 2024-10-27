@@ -2,6 +2,7 @@ import { Color } from "../utils";
 import { AllMembers, Memberships } from "./members";
 import { Constraints } from "./constraints";
 import { Rights } from "./rights";
+import { Category } from "../utils";
 
 // Interface for a single resource
 // TODO: Investigate the meaning of all the fields
@@ -9,7 +10,7 @@ export interface Resource {
     id: number;
     name: string;
     path: string;
-    category: string;
+    category: Category;
     isGroup: boolean;
     type: string;
     email: string;
