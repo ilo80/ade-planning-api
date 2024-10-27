@@ -1,4 +1,5 @@
 export type { Resource, Resources } from "./resources";
+export type { Activity, Activities } from "./activities";
 export type { Event, Events, EventParticipant, EventParticipants } from "./events";
 export type { Project, Projects } from "./projects";
 export type { Constraints } from "./constraints";

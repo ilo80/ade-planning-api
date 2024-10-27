@@ -46,3 +46,7 @@ export interface Activity {
     resources: Resources;
     rights: Rights;
 }
+
+export interface Activities {
+    activities: Activity[];
+}
