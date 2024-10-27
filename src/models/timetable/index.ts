@@ -1,5 +1,5 @@
 export type { Resource, Resources } from "./resources";
-export type { Event, Events } from "./events";
+export type { Event, Events, EventParticipant, EventParticipants } from "./events";
 export type { Project, Projects } from "./projects";
 export type { Constraints } from "./constraints";
 export type { Rights } from "./rights";
