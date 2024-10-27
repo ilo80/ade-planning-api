@@ -1,7 +1,7 @@
 import type { Credentials } from "../auth";
 
 export interface Fetcher {
-    baseUrl: string;
+    apiUrl: string;
 
     initializeSession(credentials: Credentials): Promise<void>;
     terminateSession(): Promise<void>;
