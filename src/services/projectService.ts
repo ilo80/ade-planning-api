@@ -1,6 +1,11 @@
 import { Projects, Project } from "../models/timetable";
 import { ADEFetcher } from "../utils/fetcher";
 
+/**
+ * Get the projects list
+ * @param fetcher ADEFetcher instance
+ * @returns A list of projects (Projects)
+ */
 export async function getProjects(fetcher: ADEFetcher): Promise<Projects> {
     const data = await fetcher.get({ function: "getProjects", detail: 2 }) as { projects: {project: any[]} }; // Fetch the projects data 
 
@@ -22,6 +27,12 @@ export async function getProjects(fetcher: ADEFetcher): Promise<Projects> {
     return projects;
 }
 
+/** 
+ * Set the project
+ * @param fetcher ADEFetcher instance
+ * @param project The project to set
+ * @returns void
+*/
 export async function setProject(fetcher: ADEFetcher, project: Project): Promise<void> {
     await fetcher.get({ function: "setProject", projectId: project.id }); // Set the project
 }
