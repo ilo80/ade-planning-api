@@ -21,3 +21,7 @@ export async function getProjects(fetcher: ADEFetcher): Promise<Projects> {
 
     return projects;
 }
+
+export async function setProject(fetcher: ADEFetcher, project: Project): Promise<void> {
+    await fetcher.get({ function: "setProject", projectId: project.id }); // Set the project
+}
