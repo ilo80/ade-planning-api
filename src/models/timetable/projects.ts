@@ -2,7 +2,7 @@
 export interface Project {
     id: number;
     name: string;
-    uuid: number;
+    uid: number;
 }
 
 // Interface for a list of projects
