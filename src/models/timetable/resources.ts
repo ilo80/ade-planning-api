@@ -58,6 +58,4 @@ export interface Resource {
     rights: Rights;
 }
 
-export interface Resources {
-    ressources: Resource[]; 
-}
+export type Resources = Resource[];
