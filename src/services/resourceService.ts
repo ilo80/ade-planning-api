@@ -34,6 +34,12 @@ interface ResourceParams {
     detail: string;
 }
 
+/**
+ * Get the resources list
+ * @param fetcher ADEFetcher instance
+ * @param params The parameters to pass to the API.
+ * @returns A list of resources (Resources)
+ */
 export async function getResources(fetcher: ADEFetcher, params: ResourceParams): Promise<Resources> {
     const data = await fetcher.get({ function: "getResources", ...params }) as { resources: { resource: any[] } };
     

@@ -60,6 +60,10 @@ export class ADEPlanningAPI {
         return await getEvents(this.fetcher, params);
     }
     
+    /**
+     * @param params The parameters to pass to the API.
+     * @returns A promise that resolves with the list of resources.
+     */
     async getResources(params: any): Promise<Resources> {
         return await getResources(this.fetcher, params);
     }
