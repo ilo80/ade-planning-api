@@ -1,10 +1,7 @@
 import { ADEFetcher } from "../utils/fetcher";
 import { parseRGBColor } from "../utils/color";
 import { parseDateFromDDMMYYYY, parseDateFromDDMMYYYYHHMM } from "../utils/date";
-
 import { Events, Event } from "../models/timetable/events";
-import { Color } from "../models/utils";
-
 
 interface EventParams {
     eventId: number;
