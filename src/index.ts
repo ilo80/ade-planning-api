@@ -50,6 +50,11 @@ export class ADEPlanningAPI {
         return await setProject(this.fetcher, project);
     }
 
+    /**
+     * Gets the list of events.
+     * @param params The parameters to pass to the API.
+     * @returns A promise that resolves with the list of events.
+     */
     async getEvents(params: any): Promise<Events> {
         return await getEvents(this.fetcher, params);
     }

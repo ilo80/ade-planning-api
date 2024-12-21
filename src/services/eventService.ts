@@ -25,7 +25,12 @@ function parseDateFromDDMMYYYYHHMM(dateString: string): Date {
     return new Date(year, month - 1, day, hours, minutes);
 }
 
-
+/**
+ * Get the events list
+ * @param fetcher ADEFetcher instance
+ * @param params The parameters to pass to the API.
+ * @returns A list of events (Events)
+ */
 export async function getEvents(fetcher: ADEFetcher, params: EventParams): Promise<Events> {
     const data = await fetcher.get({ function: "getEvents", ...params }) as { events?: { event: any[] }, event?: any[] };
 
