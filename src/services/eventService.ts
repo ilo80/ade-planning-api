@@ -25,14 +25,13 @@ function parseDateFromDDMMYYYYHHMM(dateString: string): Date {
     return new Date(year, month - 1, day, hours, minutes);
 }
 
+
 export async function getEvents(fetcher: ADEFetcher, params: EventParams): Promise<Events> {
     const data = await fetcher.get({ function: "getEvents", ...params }) as { events?: { event: any[] }, event?: any[] };
 
     if (!data.events) { // Single event
         data.events = { event: [data.event] };
     }
-
-    console.log(data.events.event[0].$);
 
     return data.events.event.map(event => ({
         id: parseInt(event.$.id, 10),
@@ -57,7 +56,7 @@ export async function getEvents(fetcher: ADEFetcher, params: EventParams): Promi
         creation: parseDateFromDDMMYYYYHHMM(event.$.creation),
         isLockResources: Boolean(event.$.isLockResources),
         isSoftKeepResources: Boolean(event.$.isSoftKeepResources),
-        resources: event.$.resources, // TODO: Parse resources
-        additional: event.$.additional // TODO: Parse additional
+        resources: event.resources, // TODO: Parse resources
+        additional: event.additional // TODO: Parse additional
     }) as Event);
 }
