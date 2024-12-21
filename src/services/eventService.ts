@@ -12,12 +12,27 @@ interface EventParams {
     detail: number;
 }
 
+function parseDateFromDDMMYYYY(date: string): Date {
+    const [day, month, year] = date.split("/").map(Number);
+    return new Date(year, month - 1, day);
+}
+
+function parseDateFromDDMMYYYYHHMM(dateString: string): Date {
+    const [datePart, timePart] = dateString.split(' ');
+    const [day, month, year] = datePart.split('/').map(num => parseInt(num, 10));
+    const [hours, minutes] = timePart.split(':').map(num => parseInt(num, 10));
+
+    return new Date(year, month - 1, day, hours, minutes);
+}
+
 export async function getEvents(fetcher: ADEFetcher, params: EventParams): Promise<Events> {
     const data = await fetcher.get({ function: "getEvents", ...params }) as { events?: { event: any[] }, event?: any[] };
 
     if (!data.events) { // Single event
         data.events = { event: [data.event] };
     }
+
+    console.log(data.events.event[0].$);
 
     return data.events.event.map(event => ({
         id: parseInt(event.$.id, 10),
@@ -27,7 +42,7 @@ export async function getEvents(fetcher: ADEFetcher, params: EventParams): Promi
         name: event.$.name,
         endHour: event.$.endHour,
         startHour: event.$.startHour,
-        date: new Date(event.$.date), // TODO: Fix date parsing
+        date: parseDateFromDDMMYYYY(event.$.date),
         absoluteSlot: parseInt(event.$.absoluteSlot, 10),
         slot: parseInt(event.$.slot, 10),
         day: parseInt(event.$.day, 10),
@@ -38,8 +53,8 @@ export async function getEvents(fetcher: ADEFetcher, params: EventParams): Promi
         note: event.$.note,
         color: {r: parseInt(event.$.color.split(",")[0], 10), g: parseInt(event.$.color.split(",")[1], 10), b: parseInt(event.$.color.split(",")[2], 10)}, // Parse RGB as object
         isLockPosition: Boolean(event.$.isLockPosition),
-        lastUpdate: new Date(event.$.lastUpdate),
-        creation: new Date(event.$.creation),
+        lastUpdate: parseDateFromDDMMYYYYHHMM(event.$.lastUpdate),
+        creation: parseDateFromDDMMYYYYHHMM(event.$.creation),
         isLockResources: Boolean(event.$.isLockResources),
         isSoftKeepResources: Boolean(event.$.isSoftKeepResources),
         resources: event.$.resources, // TODO: Parse resources
