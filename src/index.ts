@@ -1,8 +1,9 @@
 import { ADEFetcher } from "./utils/fetcher";
 import type { Credentials } from "./models/auth";
-import { Events, Project, Projects } from "./models/timetable";
+import { Events, Project, Projects, Resources } from "./models/timetable";
 import { getProjects, setProject } from "./services/projectService";
 import { getEvents } from "./services/eventService";
+import { getResources } from "./services/resourceService";
 
 export class ADEPlanningAPI {
     private fetcher: ADEFetcher;
@@ -57,5 +58,9 @@ export class ADEPlanningAPI {
      */
     async getEvents(params: any): Promise<Events> {
         return await getEvents(this.fetcher, params);
+    }
+    
+    async getResources(params: any): Promise<Resources> {
+        return await getResources(this.fetcher, params);
     }
 }
