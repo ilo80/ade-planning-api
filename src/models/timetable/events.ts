@@ -5,7 +5,7 @@ import { Category } from "../utils";
 export interface Event {
     id: number;
     activityId: number;
-    session: number;
+    session: string;
     repetition: number;
     name: string;
     endHour: string;
@@ -29,9 +29,7 @@ export interface Event {
     additional: Additional;
 }
 
-export interface Events {
-    events: Event[];
-}
+export type Events = Event[];
 
 export interface EventParticipant {
     fromWorkflow: boolean;
