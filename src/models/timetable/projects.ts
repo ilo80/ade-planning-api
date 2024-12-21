@@ -6,6 +6,4 @@ export interface Project {
 }
 
 // Interface for a list of projects
-export interface Projects {
-    projects: Project[];
-}
+export type Projects = Project[];
