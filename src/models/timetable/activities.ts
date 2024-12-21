@@ -47,6 +47,4 @@ export interface Activity {
     rights: Rights;
 }
 
-export interface Activities {
-    activities: Activity[];
-}
+export type Activities = Activity[];
