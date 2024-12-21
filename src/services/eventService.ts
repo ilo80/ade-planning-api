@@ -1,7 +1,10 @@
 import { ADEFetcher } from "../utils/fetcher";
 import { parseRGBColor } from "../utils/color";
+import { parseDateFromDDMMYYYY, parseDateFromDDMMYYYYHHMM } from "../utils/date";
+
 import { Events, Event } from "../models/timetable/events";
 import { Color } from "../models/utils";
+
 
 interface EventParams {
     eventId: number;
@@ -12,19 +15,6 @@ interface EventParams {
     days: number;
     date: string;
     detail: number;
-}
-
-function parseDateFromDDMMYYYY(date: string): Date {
-    const [day, month, year] = date.split("/").map(Number);
-    return new Date(year, month - 1, day);
-}
-
-function parseDateFromDDMMYYYYHHMM(dateString: string): Date {
-    const [datePart, timePart] = dateString.split(' ');
-    const [day, month, year] = datePart.split('/').map(num => parseInt(num, 10));
-    const [hours, minutes] = timePart.split(':').map(num => parseInt(num, 10));
-
-    return new Date(year, month - 1, day, hours, minutes);
 }
 
 /**
