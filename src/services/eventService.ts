@@ -1,5 +1,6 @@
 import { ADEFetcher } from "../utils/fetcher";
 import { Events, Event } from "../models/timetable/events";
+import { Color } from "../models/utils";
 
 interface EventParams {
     eventId: number;
@@ -23,6 +24,11 @@ function parseDateFromDDMMYYYYHHMM(dateString: string): Date {
     const [hours, minutes] = timePart.split(':').map(num => parseInt(num, 10));
 
     return new Date(year, month - 1, day, hours, minutes);
+}
+
+function parseRGBColor(color: string): Color {
+    const [r, g, b] = color.split(',').map(Number);
+    return { r, g, b };
 }
 
 /**
@@ -55,7 +61,7 @@ export async function getEvents(fetcher: ADEFetcher, params: EventParams): Promi
         duration: parseInt(event.$.duration),
         info: event.$.info,
         note: event.$.note,
-        color: {r: parseInt(event.$.color.split(",")[0], 10), g: parseInt(event.$.color.split(",")[1], 10), b: parseInt(event.$.color.split(",")[2], 10)}, // Parse RGB as object
+        color: parseRGBColor(event.$.color),
         isLockPosition: Boolean(event.$.isLockPosition),
         lastUpdate: parseDateFromDDMMYYYYHHMM(event.$.lastUpdate),
         creation: parseDateFromDDMMYYYYHHMM(event.$.creation),
