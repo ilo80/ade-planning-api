@@ -1,4 +1,5 @@
 import { ADEFetcher } from "../utils/fetcher";
+import { parseRGBColor } from "../utils/color";
 import { Events, Event } from "../models/timetable/events";
 import { Color } from "../models/utils";
 
@@ -24,11 +25,6 @@ function parseDateFromDDMMYYYYHHMM(dateString: string): Date {
     const [hours, minutes] = timePart.split(':').map(num => parseInt(num, 10));
 
     return new Date(year, month - 1, day, hours, minutes);
-}
-
-function parseRGBColor(color: string): Color {
-    const [r, g, b] = color.split(',').map(Number);
-    return { r, g, b };
 }
 
 /**
