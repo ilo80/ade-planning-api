@@ -68,3 +68,5 @@ export class ADEPlanningAPI {
         return await getResources(this.fetcher, params);
     }
 }
+
+export type { Credentials, Events, Project, Projects, Resources };
