@@ -27,6 +27,10 @@ export async function getEvents(fetcher: ADEFetcher, params: EventParams): Promi
         data.events = { event: [data.event] };
     }
 
+    if (!data.events.event[0]) { // No events
+        return [];
+    }
+
     return data.events.event.map(event => ({
         id: parseInt(event.$.id, 10),
         activityId: parseInt(event.$.activityId, 10),
