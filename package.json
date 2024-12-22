@@ -4,7 +4,7 @@
   "description": "An unofficial API wrapper for ADE Planning from Adesoft",
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc"
   },
   "keywords": [
     "adesoft",
