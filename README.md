@@ -1,8 +1,8 @@
 # ade-planning-api
 
 <p align="center">
-<!--   <img alt="Version" src="https://img.shields.io/npm/v/ade-planning-api?style=for-the-badge"> -->
-<!--   <img alt="Downloads" src="https://img.shields.io/npm/dv/ade-planning-api?style=for-the-badge"> -->
+  <img alt="Version" src="https://img.shields.io/npm/v/ade-planning-api?style=for-the-badge">
+  <img alt="Downloads" src="https://img.shields.io/npm/dv/ade-planning-api?style=for-the-badge">
   <img alt="License" src="https://img.shields.io/github/license/ilo80/ade-planning-api?style=for-the-badge">
 </p>
 
