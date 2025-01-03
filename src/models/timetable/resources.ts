@@ -29,7 +29,7 @@ export interface Resource {
     nbEventsPlaced: number;
     availableQuantity: number;
     number: number;
-    fatherName: number;
+    fatherName: string;
     fatherId: number;
     info: string,
     codeZ: string;
