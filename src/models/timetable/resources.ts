@@ -29,7 +29,7 @@ export interface Resource {
     nbEventsPlaced: number;
     availableQuantity: number;
     number: number;
-    fatherName: number;
+    fatherName: string;
     fatherId: number;
     info: string,
     codeZ: string;
@@ -49,9 +49,6 @@ export interface Resource {
     color: Color;
     levelAccess: string;
     owner: string;
-    fromWorkflow?: boolean;
-    nodeId?: number;
-    nodeOrId?: number;
     allMembers: AllMembers;
     memberships: Memberships;
     constraints: Constraints;
