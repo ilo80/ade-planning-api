@@ -1,6 +1,6 @@
 import { ADEFetcher } from "./utils/fetcher";
 import type { Credentials } from "./models/auth";
-import { Events, Project, Projects, Resources } from "./models/timetable";
+import { Events, Project, Projects, Resources, Event, Resource } from "./models/timetable";
 import { getProjects, setProject } from "./services/projectService";
 import { getEvents } from "./services/eventService";
 import { getResources } from "./services/resourceService";
@@ -69,4 +69,4 @@ export class ADEPlanningAPI {
     }
 }
 
-export type { Credentials, Events, Project, Projects, Resources };
+export type { Resources, Events, Projects, Credentials, Resource, Event, Project };
