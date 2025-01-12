@@ -1,6 +1,6 @@
 import { ADEFetcher } from "./utils/fetcher";
 import type { Credentials } from "./models/auth";
-import { Events, Project, Projects, Resources, Event, Resource, Memberships, AllMembers, Counters, Constraints, Cost, Activities, Activity, Rights } from "./models/timetable";
+import { Events, Project, Projects, Event, Memberships, AllMembers, Counters, Constraints, Cost, Activities, Activity, Rights, Resource, Resource1, Resource2, Resource3, Resource4, Resource5, Resource6, Resource7, Resource8, Resource9, Resource10, Resource11, Resource12, Resource13 } from "./models/timetable";
 import { getProjects, setProject } from "./services/projectService";
 import { getEvents } from "./services/eventService";
 import { getResources } from "./services/resourceService";
@@ -64,9 +64,9 @@ export class ADEPlanningAPI {
      * @param params The parameters to pass to the API.
      * @returns A promise that resolves with the list of resources.
      */
-    async getResources(params: any): Promise<Resources> {
+    async getResources(params: any): Promise<Resource[]> {
         return await getResources(this.fetcher, params);
     }
 }
 
-export type { Events, Project, Projects, Resources, Event, Resource, Memberships, AllMembers, Counters, Constraints, Cost, Activities, Activity, Rights };
+export type { Events, Project, Projects, Event, Memberships, AllMembers, Counters, Constraints, Cost, Activities, Activity, Rights, Resource1, Resource2, Resource3, Resource4, Resource5, Resource6, Resource7, Resource8, Resource9, Resource10, Resource11, Resource12, Resource13 };
