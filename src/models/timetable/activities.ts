@@ -1,6 +1,6 @@
 import { Color } from "../utils";
 import { Events } from "./events";
-import { Resources } from "./resources";
+import { Resource } from "./resources";
 import { Rights } from "./rights";
 
 export interface Activity {
@@ -43,7 +43,7 @@ export interface Activity {
     ownerId: number;
     owner: string;
     events: Events;
-    resources: Resources;
+    resources: Resource[];
     rights: Rights;
 }
 

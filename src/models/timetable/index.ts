@@ -1,4 +1,4 @@
-export type { Resource, Resources } from "./resources";
+export type { Resource, Resource1, Resource2, Resource3, Resource4, Resource5, Resource6, Resource7, Resource8, Resource9, Resource10, Resource11, Resource12, Resource13 } from "./resources";
 export type { Activity, Activities } from "./activities";
 export type { Event, Events, EventParticipant, EventParticipants } from "./events";
 export type { Project, Projects } from "./projects";

@@ -1,5 +1,5 @@
 import { Color } from "../utils";
-import { Resources } from "./resources";
+import { Resource } from "./resources";
 import { Category } from "../utils";
 
 export interface Event {
@@ -25,7 +25,7 @@ export interface Event {
     creation: Date;
     isLockResources: boolean;
     isSoftKeepResources: boolean;
-    resources: Resources;
+    resources: Resource[];
     additional: Additional;
 }
 
