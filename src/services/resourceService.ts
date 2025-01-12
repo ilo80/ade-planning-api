@@ -1,7 +1,7 @@
 import { ADEFetcher } from "../utils/fetcher";
 import { parseRGBColor } from "../utils/color";
 import { parseDateFromDDMMYYYYHHMM } from "../utils/date";
-import { Resources, Resource } from "../models/timetable/resources";
+import { Resource1, Resource2, Resource3, Resource4, Resource5, Resource6, Resource7, Resource8, Resource9, Resource10, Resource11, Resource12, Resource13, Resource } from "../models/timetable";
 
 interface ResourceParams {
     tree: number;
@@ -31,65 +31,289 @@ interface ResourceParams {
     codeY: string;
     codeZ: string;
     info: string;
-    detail: string;
+    detail: number;
 }
 
 /**
  * Get the resources list
  * @param fetcher ADEFetcher instance
  * @param params The parameters to pass to the API.
- * @returns A list of resources (Resources)
+ * @returns A list of resources (Resource[])
  */
-export async function getResources(fetcher: ADEFetcher, params: ResourceParams): Promise<Resources> {
+export async function getResources(fetcher: ADEFetcher, params: ResourceParams) : Promise<Resource[]>{
     const data = await fetcher.get({ function: "getResources", ...params }) as { resources: { resource: any[] } };
-    
-    return data.resources.resource.map(resource => ({
-        id: parseInt(resource.$.id, 10),
-        name: resource.$.name,
-        path: resource.$.path,
-        category: resource.$.category,
-        isGroup: Boolean(resource.$.isGroup),
-        type: resource.$.type,
-        email: resource.$.email,
-        url: resource.$.url,
-        consumer: Boolean(resource.$.consumer),
-        size: parseInt(resource.$.size, 10),
-        lastUpdate: parseDateFromDDMMYYYYHHMM(resource.$.lastUpdate),
-        creation: parseDateFromDDMMYYYYHHMM(resource.$.creation),
-        lastSlot: parseInt(resource.$.lastSlot, 10),
-        lastDay: parseInt(resource.$.lastDay, 10),
-        lastWeek: parseInt(resource.$.lastWeek, 10),
-        firstSlot: parseInt(resource.$.firstSlot, 10),
-        firstDay: parseInt(resource.$.firstDay, 10),
-        firstWeek: parseInt(resource.$.firstWeek, 10),
-        durationInMinutes: parseInt(resource.$.durationInMinutes, 10),
-        nbEventsPlaced: parseInt(resource.$.nbEventsPlaced, 10),
-        availableQuantity: parseInt(resource.$.availableQuantity, 10),
-        number: parseInt(resource.$.number, 10),
-        fatherName: resource.$.fatherName,
-        fatherId: parseInt(resource.$.fatherId, 10),
-        info: resource.$.info,
-        codeZ: resource.$.codeZ,
-        codeY: resource.$.codeY,
-        codeX: resource.$.codeX,
-        manager: resource.$.manager,
-        jobCategory: resource.$.jobCategory,
-        timezone: resource.$.timezone,
-        fax: resource.$.fax,
-        telephone: resource.$.telephone,
-        country: resource.$.country,
-        city: resource.$.city,
-        state: resource.$.state,
-        zipCode: resource.$.zipCode,
-        address2: resource.$.address2,
-        address1: resource.$.address1,
-        code: resource.$.code,
-        color: parseRGBColor(resource.$.color),
-        levelAccess: resource.$.levelAccess,
-        owner: resource.$.owner,
-        allMembers: resource.$.allMembers, // TODO: Parse members
-        memberships: resource.$.memberships, // TODO: Parse memberships
-        constraints: resource.$.constraints, // TODO: Parse contraints
-        rights: resource.$.rights, // TODO: Parse rights
-    }) as Resource);
+
+    switch (params.detail) {
+        default:
+        case 1:
+            return data.resources.resource.map(ressource => ({
+                id: parseInt(ressource.$.id, 10)
+            })) as Resource1[];
+
+        case 2:
+            return data.resources.resource.map(ressource => ({
+                id: parseInt(ressource.$.id, 10),
+                name: ressource.$.name
+            })) as Resource2[];
+        
+        case 3:
+            return data.resources.resource.map(ressource => ({
+                id: parseInt(ressource.$.id, 10),
+                name: ressource.$.name,
+                path: ressource.$.path,
+                category: ressource.$.category
+            })) as Resource3[];
+        
+        case 4:
+            return data.resources.resource.map(ressource => ({
+                id: parseInt(ressource.$.id, 10),
+                name: ressource.$.name,
+                path: ressource.$.path,
+                category: ressource.$.category,
+                isGroup: Boolean(ressource.$.isGroup)
+            })) as Resource4[];
+
+        case 5:
+            return data.resources.resource.map(ressource => ({
+                id: parseInt(ressource.$.id, 10),
+                name: ressource.$.name,
+                path: ressource.$.path,
+                category: ressource.$.category,
+                isGroup: Boolean(ressource.$.isGroup),
+                type: ressource.$.type
+            })) as Resource5[];
+
+        case 6:
+            return data.resources.resource.map(ressource => ({
+                id: parseInt(ressource.$.id, 10),
+                name: ressource.$.name,
+                path: ressource.$.path,
+                category: ressource.$.category,
+                isGroup: Boolean(ressource.$.isGroup),
+                type: ressource.$.type,
+                email: ressource.$.email
+            })) as Resource6[];
+        
+        case 7:
+            return data.resources.resource.map(ressource => ({
+                id: parseInt(ressource.$.id, 10),
+                name: ressource.$.name,
+                path: ressource.$.path,
+                category: ressource.$.category,
+                isGroup: Boolean(ressource.$.isGroup),
+                type: ressource.$.type,
+                email: ressource.$.email,
+                url: ressource.$.url
+            })) as Resource7[];
+
+        case 8:
+            return data.resources.resource.map(ressource => ({
+                id: parseInt(ressource.$.id, 10),
+                name: ressource.$.name,
+                path: ressource.$.path,
+                category: ressource.$.category,
+                isGroup: Boolean(ressource.$.isGroup),
+                type: ressource.$.type,
+                email: ressource.$.email,
+                url: ressource.$.url,
+                consumer: Boolean(ressource.$.consumer),
+                size: parseInt(ressource.$.size, 10)
+            })) as Resource8[];
+
+        case 9:
+            return data.resources.resource.map(ressource => ({
+                id: parseInt(ressource.$.id, 10),
+                name: ressource.$.name,
+                path: ressource.$.path,
+                category: ressource.$.category,
+                isGroup: Boolean(ressource.$.isGroup),
+                type: ressource.$.type,
+                email: ressource.$.email,
+                url: ressource.$.url,
+                consumer: Boolean(ressource.$.consumer),
+                size: parseInt(ressource.$.size, 10),
+                lastUpdate: parseDateFromDDMMYYYYHHMM(ressource.$.lastUpdate),
+                creation: parseDateFromDDMMYYYYHHMM(ressource.$.creation),
+                lastDay: parseInt(ressource.$.lastDay, 10),
+                lastWeek: parseInt(ressource.$.lastWeek, 10),
+                firstSlot: parseInt(ressource.$.firstSlot, 10),
+                firstDay: parseInt(ressource.$.firstDay, 10),
+                firstWeek: parseInt(ressource.$.firstWeek, 10),
+                durationInMinutes: parseInt(ressource.$.durationInMinutes, 10),
+                nbEventsPlaced: parseInt(ressource.$.nbEventsPlaced, 10),
+                availableQuantity: parseInt(ressource.$.availableQuantity, 10),
+                number: parseInt(ressource.$.number, 10)
+            })) as Resource9[];
+        
+        case 10:
+            return data.resources.resource.map(ressource => ({
+                id: parseInt(ressource.$.id, 10),
+                name: ressource.$.name,
+                path: ressource.$.path,
+                category: ressource.$.category,
+                isGroup: Boolean(ressource.$.isGroup),
+                type: ressource.$.type,
+                email: ressource.$.email,
+                url: ressource.$.url,
+                consumer: Boolean(ressource.$.consumer),
+                size: parseInt(ressource.$.size, 10),
+                lastUpdate: parseDateFromDDMMYYYYHHMM(ressource.$.lastUpdate),
+                creation: parseDateFromDDMMYYYYHHMM(ressource.$.creation),
+                lastDay: parseInt(ressource.$.lastDay, 10),
+                lastWeek: parseInt(ressource.$.lastWeek, 10),
+                firstSlot: parseInt(ressource.$.firstSlot, 10),
+                firstDay: parseInt(ressource.$.firstDay, 10),
+                firstWeek: parseInt(ressource.$.firstWeek, 10),
+                durationInMinutes: parseInt(ressource.$.durationInMinutes, 10),
+                nbEventsPlaced: parseInt(ressource.$.nbEventsPlaced, 10),
+                availableQuantity: parseInt(ressource.$.availableQuantity, 10),
+                number: parseInt(ressource.$.number, 10),
+                fatherName: ressource.$.fatherName,
+                fatherId: parseInt(ressource.$.fatherId, 10)
+            })) as Resource10[];
+
+        case 11:
+            return data.resources.resource.map(ressource => ({
+                id: parseInt(ressource.$.id, 10),
+                name: ressource.$.name,
+                path: ressource.$.path,
+                category: ressource.$.category,
+                isGroup: Boolean(ressource.$.isGroup),
+                type: ressource.$.type,
+                email: ressource.$.email,
+                url: ressource.$.url,
+                consumer: Boolean(ressource.$.consumer),
+                size: parseInt(ressource.$.size, 10),
+                lastUpdate: parseDateFromDDMMYYYYHHMM(ressource.$.lastUpdate),
+                creation: parseDateFromDDMMYYYYHHMM(ressource.$.creation),
+                lastDay: parseInt(ressource.$.lastDay, 10),
+                lastWeek: parseInt(ressource.$.lastWeek, 10),
+                firstSlot: parseInt(ressource.$.firstSlot, 10),
+                firstDay: parseInt(ressource.$.firstDay, 10),
+                firstWeek: parseInt(ressource.$.firstWeek, 10),
+                durationInMinutes: parseInt(ressource.$.durationInMinutes, 10),
+                nbEventsPlaced: parseInt(ressource.$.nbEventsPlaced, 10),
+                availableQuantity: parseInt(ressource.$.availableQuantity, 10),
+                number: parseInt(ressource.$.number, 10),
+                fatherName: ressource.$.fatherName,
+                fatherId: parseInt(ressource.$.fatherId, 10),
+                info: ressource.$.info,
+                codeZ: ressource.$.codeZ,
+                codeX: ressource.$.codeX,
+                manager: ressource.$.manager,
+                jobCategory: ressource.$.jobCategory,
+                timezone: ressource.$.timezone,
+                fax: ressource.$.fax,
+                telephone: ressource.$.telephone,
+                country: ressource.$.country,
+                city: ressource.$.city,
+                state: ressource.$.state,
+                zipCode: ressource.$.zipCode,
+                address2: ressource.$.address2,
+                address1: ressource.$.address1,
+                code: ressource.$.code,
+                color: parseRGBColor(ressource.$.color),
+
+            })) as Resource11[];
+        
+        case 12:
+            return data.resources.resource.map(ressource => ({
+                id: parseInt(ressource.$.id, 10),
+                name: ressource.$.name,
+                path: ressource.$.path,
+                category: ressource.$.category,
+                isGroup: Boolean(ressource.$.isGroup),
+                type: ressource.$.type,
+                email: ressource.$.email,
+                url: ressource.$.url,
+                consumer: Boolean(ressource.$.consumer),
+                size: parseInt(ressource.$.size, 10),
+                lastUpdate: parseDateFromDDMMYYYYHHMM(ressource.$.lastUpdate),
+                creation: parseDateFromDDMMYYYYHHMM(ressource.$.creation),
+                lastDay: parseInt(ressource.$.lastDay, 10),
+                lastWeek: parseInt(ressource.$.lastWeek, 10),
+                firstSlot: parseInt(ressource.$.firstSlot, 10),
+                firstDay: parseInt(ressource.$.firstDay, 10),
+                firstWeek: parseInt(ressource.$.firstWeek, 10),
+                durationInMinutes: parseInt(ressource.$.durationInMinutes, 10),
+                nbEventsPlaced: parseInt(ressource.$.nbEventsPlaced, 10),
+                availableQuantity: parseInt(ressource.$.availableQuantity, 10),
+                number: parseInt(ressource.$.number, 10),
+                fatherName: ressource.$.fatherName,
+                fatherId: parseInt(ressource.$.fatherId, 10),
+                info: ressource.$.info,
+                codeZ: ressource.$.codeZ,
+                codeX: ressource.$.codeX,
+                manager: ressource.$.manager,
+                jobCategory: ressource.$.jobCategory,
+                timezone: ressource.$.timezone,
+                fax: ressource.$.fax,
+                telephone: ressource.$.telephone,
+                country: ressource.$.country,
+                city: ressource.$.city,
+                state: ressource.$.state,
+                zipCode: ressource.$.zipCode,
+                address2: ressource.$.address2,
+                address1: ressource.$.address1,
+                code: ressource.$.code,
+                color: parseRGBColor(ressource.$.color),
+                levelAccess: ressource.$.levelAccess,
+                owner: ressource.$.owner,
+                rights: ressource.$.rights,
+
+            })) as Resource12[];
+
+        case 13:
+            return data.resources.resource.map(ressource => ({
+                id: parseInt(ressource.$.id, 10),
+                name: ressource.$.name,
+                path: ressource.$.path,
+                category: ressource.$.category,
+                isGroup: Boolean(ressource.$.isGroup),
+                type: ressource.$.type,
+                email: ressource.$.email,
+                url: ressource.$.url,
+                consumer: Boolean(ressource.$.consumer),
+                size: parseInt(ressource.$.size, 10),
+                lastUpdate: parseDateFromDDMMYYYYHHMM(ressource.$.lastUpdate),
+                creation: parseDateFromDDMMYYYYHHMM(ressource.$.creation),
+                lastDay: parseInt(ressource.$.lastDay, 10),
+                lastWeek: parseInt(ressource.$.lastWeek, 10),
+                firstSlot: parseInt(ressource.$.firstSlot, 10),
+                firstDay: parseInt(ressource.$.firstDay, 10),
+                firstWeek: parseInt(ressource.$.firstWeek, 10),
+                durationInMinutes: parseInt(ressource.$.durationInMinutes, 10),
+                nbEventsPlaced: parseInt(ressource.$.nbEventsPlaced, 10),
+                availableQuantity: parseInt(ressource.$.availableQuantity, 10),
+                number: parseInt(ressource.$.number, 10),
+                fatherName: ressource.$.fatherName,
+                fatherId: parseInt(ressource.$.fatherId, 10),
+                info: ressource.$.info,
+                codeZ: ressource.$.codeZ,
+                codeX: ressource.$.codeX,
+                manager: ressource.$.manager,
+                jobCategory: ressource.$.jobCategory,
+                timezone: ressource.$.timezone,
+                fax: ressource.$.fax,
+                telephone: ressource.$.telephone,
+                country: ressource.$.country,
+                city: ressource.$.city,
+                state: ressource.$.state,
+                zipCode: ressource.$.zipCode,
+                address2: ressource.$.address2,
+                address1: ressource.$.address1,
+                code: ressource.$.code,
+                color: parseRGBColor(ressource.$.color),
+                levelAccess: ressource.$.levelAccess,
+                owner: ressource.$.owner,
+                rights: ressource.$.rights,
+                allMembers: ressource.$.allMembers,
+                memberships: ressource.$.memberships,
+                contraints: ressource.$.constraints,
+                cost: ressource.$.cost,
+                caracteristics: ressource.$.caracteristics,
+                counters: ressource.$.counters,
+                setupTimes: ressource.$.setupTimes
+            })) as Resource13[];
+    }
 }
