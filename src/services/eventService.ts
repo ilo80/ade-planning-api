@@ -4,6 +4,23 @@ import { parseDateFromDDMMYYYY, parseDateFromDDMMYYYYHHMM } from "../utils/date"
 import type { EventParams, EventByDetail } from "../models/timetable";
 
 /**
+ * Parse the event resources
+ * @param resource The resource to parse
+ * @returns The parsed resource
+ */
+function parseEventResource(resource: [ { resource: [{ $: any }] } ]) {
+    return resource[0].resource.map(e => ({
+        fromWorkflow: Boolean(e.$.fromWorkflow),
+        nodeId: parseInt(e.$.nodeId, 10),
+        nodeOrId: parseInt(e.$.nodeOrId, 10),
+        quantity: parseInt(e.$.quantity, 10),
+        category: e.$.category,
+        name: e.$.name,
+        id: parseInt(e.$.id, 10),
+    }));
+}
+
+/**
  * Get the events list
  * @param fetcher ADEFetcher instance
  * @param params The parameters to pass to the API.
@@ -74,7 +91,7 @@ export async function getEvents<T extends number>(fetcher: ADEFetcher, params: E
 
         if (params.detail >= 8) {
             Object.assign(baseEvent, {
-                resources: event.resources, // TODO: Parse resources
+                resources: parseEventResource(event.resources),
                 additional: event.additional, // TODO: Parse additional
             });
         }
