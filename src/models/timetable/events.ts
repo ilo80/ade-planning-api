@@ -1,6 +1,5 @@
 import { Color } from "../utils";
 import { Resource } from "./resources";
-import { Category } from "../utils";
 
 export interface Event1 {
     id: number;
@@ -50,21 +49,27 @@ export interface Event8 extends Event7 {
     additional: Additional;
 }
 
+export type EventByDetail<T extends number> = 
+    T extends 1 ? Event1 :
+    T extends 2 ? Event2 :
+    T extends 3 ? Event3 :
+    T extends 4 ? Event4 :
+    T extends 5 ? Event5 :
+    T extends 6 ? Event6 :
+    T extends 7 ? Event7 :
+    T extends 8 ? Event8 :
+    never;
+
+export interface EventParams {
+    eventId?: number;
+    activities?: number;
+    name?: string;
+    resources?: number;
+    weeks?: number;
+    days?: number;
+    date?: string;
+};
+
 export type Event = Event1 | Event2 | Event3 | Event4 | Event5 | Event6 | Event7 | Event8;
-
-export interface EventParticipant {
-    fromWorkflow: boolean;
-    nodeId: number;
-    nodeOrId: number;
-    quantity: number;
-    category: Category;
-    name: string;
-    id: number;
-}
-
-export interface EventParticipants {
-    eventParticipants: EventParticipant[];
-    additional: Additional;
-}
 
 interface Additional {} // Don't know what to put here yet
