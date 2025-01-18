@@ -1,6 +1,6 @@
 import { ADEFetcher } from "./utils/fetcher";
-import type { Credentials } from "./models/auth";
-import { Events, Project, Projects, Event, Memberships, AllMembers, Counters, Constraints, Cost, Activities, Activity, Rights, Resource, Resource1, Resource2, Resource3, Resource4, Resource5, Resource6, Resource7, Resource8, Resource9, Resource10, Resource11, Resource12, Resource13 } from "./models/timetable";
+import { Credentials } from "./models/auth";
+import { Project, Projects, Event, Event1, Event2, Event3, Event4, Event5, Event6, Event7, Event8, Memberships, AllMembers, Counters, Constraints, Cost, Activities, Activity, Rights, Resource, Resource1, Resource2, Resource3, Resource4, Resource5, Resource6, Resource7, Resource8, Resource9, Resource10, Resource11, Resource12, Resource13 } from "./models/timetable";
 import { getProjects, setProject } from "./services/projectService";
 import { getEvents } from "./services/eventService";
 import { getResources } from "./services/resourceService";
@@ -56,7 +56,7 @@ export class ADEPlanningAPI {
      * @param params The parameters to pass to the API.
      * @returns A promise that resolves with the list of events.
      */
-    async getEvents(params: any): Promise<Events> {
+    async getEvents(params: any): Promise<Event[]> {
         return await getEvents(this.fetcher, params);
     }
     
@@ -69,4 +69,4 @@ export class ADEPlanningAPI {
     }
 }
 
-export type { Events, Project, Projects, Event, Memberships, AllMembers, Counters, Constraints, Cost, Activities, Activity, Rights, Resource1, Resource2, Resource3, Resource4, Resource5, Resource6, Resource7, Resource8, Resource9, Resource10, Resource11, Resource12, Resource13 };
+export type { Project, Projects, Event, Event1, Event2, Event3, Event4, Event5, Event6, Event7, Event8, Memberships, AllMembers, Counters, Constraints, Cost, Activities, Activity, Rights, Resource1, Resource2, Resource3, Resource4, Resource5, Resource6, Resource7, Resource8, Resource9, Resource10, Resource11, Resource12, Resource13 };
