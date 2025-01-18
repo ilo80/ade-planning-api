@@ -1,5 +1,5 @@
 import { Color } from "../utils";
-import { Events } from "./events";
+import { Event } from "./events";
 import { Resource } from "./resources";
 import { Rights } from "./rights";
 
@@ -42,7 +42,7 @@ export interface Activity {
     isSuccessiveDays: boolean;
     ownerId: number;
     owner: string;
-    events: Events;
+    events: Event[];
     resources: Resource[];
     rights: Rights;
 }

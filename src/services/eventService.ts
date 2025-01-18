@@ -1,7 +1,7 @@
 import { ADEFetcher } from "../utils/fetcher";
 import { parseRGBColor } from "../utils/color";
 import { parseDateFromDDMMYYYY, parseDateFromDDMMYYYYHHMM } from "../utils/date";
-import { Events, Event } from "../models/timetable/events";
+import { Event } from "../models/timetable/events";
 
 interface EventParams {
     eventId: number;
@@ -20,7 +20,7 @@ interface EventParams {
  * @param params The parameters to pass to the API.
  * @returns A list of events (Events)
  */
-export async function getEvents(fetcher: ADEFetcher, params: EventParams): Promise<Events> {
+export async function getEvents(fetcher: ADEFetcher, params: EventParams): Promise<Event[]> {
     const data = await fetcher.get({ function: "getEvents", ...params }) as { events?: { event: any[] }, event?: any[] };
 
     if (!data.events) { // Single event
