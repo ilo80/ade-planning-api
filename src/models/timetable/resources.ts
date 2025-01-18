@@ -94,3 +94,50 @@ export interface Resource13 extends Resource12 {
 }
 
 export type Resource = Resource1 | Resource2 | Resource3 | Resource4 | Resource5 | Resource6 | Resource7 | Resource8 | Resource9 | Resource10 | Resource11 | Resource12 | Resource13;
+
+export interface ResourceParams {
+    tree?: string;
+    folders?: string;
+    leaves?: string;
+    id?: number;
+    name?: string;
+    category?: string;
+    type?: string;
+    email?: string;
+    url?: string;
+    size?: number;
+    quantity?: number;
+    code?: string;
+    address1?: string;
+    address2?: string;
+    zipCode?: string;
+    state?: string;
+    city?: string;
+    country?: string;
+    telephone?: string;
+    fax?: string;
+    timezone?: string;
+    jobCategory?: string;
+    manager?: string;
+    codeX?: string;
+    codeY?: string;
+    codeZ?: string;
+    info?: string;
+}
+
+export type ResourceByDetail<T extends number> =
+    T extends 1 ? Resource1 :
+    T extends 2 ? Resource2 :
+    T extends 3 ? Resource3 :
+    T extends 4 ? Resource4 :
+    T extends 5 ? Resource5 :
+    T extends 6 ? Resource6 :
+    T extends 7 ? Resource7 :
+    T extends 8 ? Resource8 :
+    T extends 9 ? Resource9 :
+    T extends 10 ? Resource10 :
+    T extends 11 ? Resource11 :
+    T extends 12 ? Resource12 :
+    T extends 13 ? Resource13 :
+    never;
+
