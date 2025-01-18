@@ -10,6 +10,10 @@ import { Category } from "../models/utils";
  * @returns A list of event resources (EventResource[])
 */
 function parseEventsResource(resource: [ { resource: [{ $: { fromWorkflow: string, nodeId: string, nodeOrId: string, quantity: string, category: string, name: string, id: string } }] } ]): EventResource[] {
+    if (!resource[0].resource) {
+        return [];
+    }
+    
     return resource[0].resource.map(e => ({
         fromWorkflow: Boolean(e.$.fromWorkflow),
         nodeId: parseInt(e.$.nodeId, 10),
