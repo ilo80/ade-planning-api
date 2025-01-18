@@ -1,5 +1,5 @@
 export type { Resource, Resource1, Resource2, Resource3, Resource4, Resource5, Resource6, Resource7, Resource8, Resource9, Resource10, Resource11, Resource12, Resource13 } from "./resources";
-export type { Activity, Activities } from "./activities";
+export type { Activity } from "./activities";
 export type { Event, Event1, Event2, Event3, Event4, Event5, Event6, Event7, Event8, EventParticipant, EventParticipants } from "./events";
 export type { Project } from "./projects";
 export type { Constraints } from "./constraints";
