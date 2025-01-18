@@ -1,12 +1,12 @@
-import { Projects, Project } from "../models/timetable";
+import { Project } from "../models/timetable";
 import { ADEFetcher } from "../utils/fetcher";
 
 /**
  * Get the projects list
  * @param fetcher ADEFetcher instance
- * @returns A list of projects (Projects)
+ * @returns A list of projects (Project[])
  */
-export async function getProjects(fetcher: ADEFetcher): Promise<Projects> {
+export async function getProjects(fetcher: ADEFetcher): Promise<Project[]> {
     const data = await fetcher.get({ function: "getProjects", detail: 2 }) as { projects: {project: any[]} }; // Fetch the projects data 
 
     // Convert the data to the Projects interface

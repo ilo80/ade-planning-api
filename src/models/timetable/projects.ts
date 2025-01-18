@@ -4,6 +4,3 @@ export interface Project {
     name: string;
     uid: number;
 }
-
-// Interface for a list of projects
-export type Projects = Project[];

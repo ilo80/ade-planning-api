@@ -1,6 +1,6 @@
 import { ADEFetcher } from "./utils/fetcher";
 import type { Credentials } from "./models/auth";
-import { Events, Project, Projects, Resources, Event, Resource, Memberships, AllMembers, Counters, Constraints, Cost, Activities, Activity, Rights } from "./models/timetable";
+import type { Project, Event, EventParams, EventByDetail, Memberships, AllMembers, Counters, Constraints, Cost, Activity, ActivityParams, ActivityByDetail, Rights, Resource, ResourceParams, ResourceByDetail } from "./models/timetable";
 import { getProjects, setProject } from "./services/projectService";
 import { getEvents } from "./services/eventService";
 import { getResources } from "./services/resourceService";
@@ -38,7 +38,7 @@ export class ADEPlanningAPI {
      * Gets the list of projects.
      * @returns A promise that resolves with the list of projects.
      */
-    async getProjects(): Promise<Projects> {
+    async getProjects(): Promise<Project[]> {
         return await getProjects(this.fetcher);
     }
 
@@ -56,7 +56,7 @@ export class ADEPlanningAPI {
      * @param params The parameters to pass to the API.
      * @returns A promise that resolves with the list of events.
      */
-    async getEvents(params: any): Promise<Events> {
+    async getEvents<T extends number>(params: EventParams & { detail: T }): Promise<EventByDetail<T>[]> {
         return await getEvents(this.fetcher, params);
     }
     
@@ -64,9 +64,9 @@ export class ADEPlanningAPI {
      * @param params The parameters to pass to the API.
      * @returns A promise that resolves with the list of resources.
      */
-    async getResources(params: any): Promise<Resources> {
+    async getResources<T extends number>(params: ResourceParams & { detail: T }): Promise<ResourceByDetail<T>[]> {
         return await getResources(this.fetcher, params);
     }
 }
 
-export type { Events, Project, Projects, Resources, Event, Resource, Memberships, AllMembers, Counters, Constraints, Cost, Activities, Activity, Rights };
+export type { Credentials, Project, Event, Memberships, AllMembers, Counters, Constraints, Cost, Activity, Rights, Resource };
