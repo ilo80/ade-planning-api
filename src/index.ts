@@ -1,6 +1,6 @@
 import { ADEFetcher } from "./utils/fetcher";
 import type { Credentials } from "./models/auth";
-import type { Project, Event, EventParams, EventByDetail, Memberships, AllMembers, Counters, Constraints, Cost, Activity, Activity1, Activity2, Activity3, Activity4, Activity5, Activity6, Activity7, Activity8, Activity9, Activity10, Activity11, Activity12, Activity13, Activity14, Activity15, Activity16, Activity17, Rights, Resource, Resource1, Resource2, Resource3, Resource4, Resource5, Resource6, Resource7, Resource8, Resource9, Resource10, Resource11, Resource12, Resource13 } from "./models/timetable";
+import type { Project, Event, EventParams, EventByDetail, Memberships, AllMembers, Counters, Constraints, Cost, Activity, ActivityParams, ActivityByDetail, Rights, Resource, Resource1, Resource2, Resource3, Resource4, Resource5, Resource6, Resource7, Resource8, Resource9, Resource10, Resource11, Resource12, Resource13 } from "./models/timetable";
 import { getProjects, setProject } from "./services/projectService";
 import { getEvents } from "./services/eventService";
 import { getResources } from "./services/resourceService";
@@ -69,4 +69,4 @@ export class ADEPlanningAPI {
     }
 }
 
-export type { Credentials, Project, Event, Memberships, AllMembers, Counters, Constraints, Cost, Activity, Activity1, Activity2, Activity3, Activity4, Activity5, Activity6, Activity7, Activity8, Activity9, Activity10, Activity11, Activity12, Activity13, Activity14, Activity15, Activity16, Activity17, Rights, Resource, Resource1, Resource2, Resource3, Resource4, Resource5, Resource6, Resource7, Resource8, Resource9, Resource10, Resource11, Resource12, Resource13 };
+export type { Credentials, Project, Event, Memberships, AllMembers, Counters, Constraints, Cost, Activity, Rights, Resource, Resource1, Resource2, Resource3, Resource4, Resource5, Resource6, Resource7, Resource8, Resource9, Resource10, Resource11, Resource12, Resource13 };

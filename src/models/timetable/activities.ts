@@ -97,3 +97,43 @@ export interface Activity17 extends Activity16 {
 }
 
 export type Activity = Activity1 | Activity2 | Activity3 | Activity4 | Activity5 | Activity6 | Activity7 | Activity8 | Activity9 | Activity10 | Activity11 | Activity12 | Activity13 | Activity14 | Activity15 | Activity16 | Activity17;
+
+export type ActivityByDetail<T extends number> =
+    T extends 1 ? Activity1 :
+    T extends 2 ? Activity2 :
+    T extends 3 ? Activity3 :
+    T extends 4 ? Activity4 :
+    T extends 5 ? Activity5 :
+    T extends 6 ? Activity6 :
+    T extends 7 ? Activity7 :
+    T extends 8 ? Activity8 :
+    T extends 9 ? Activity9 :
+    T extends 10 ? Activity10 :
+    T extends 11 ? Activity11 :
+    T extends 12 ? Activity12 :
+    T extends 13 ? Activity13 :
+    T extends 14 ? Activity14 :
+    T extends 15 ? Activity15 :
+    T extends 16 ? Activity16 :
+    T extends 17 ? Activity17 :
+    never;
+
+export interface ActivityParams {
+    tree?: string;
+    id?: number;
+    name?: string;
+    resources?: Resource[];
+    type?: string;
+    url?: string;
+    capacity?: number;
+    duration?: string;
+    repetition?: number;
+    code?: string;
+    timezone?: string;
+    codeX?: string;
+    codeY?: string;
+    codeZ?: string;
+    maxSeats?: number;
+    seatsLeft?: number;
+    info?: string;
+}
