@@ -1,6 +1,6 @@
 export type { Resource, ResourceParams, ResourceByDetail } from "./resources";
 export type { Activity, ActivityParams, ActivityByDetail } from "./activities";
-export type { Event, EventParams, EventByDetail } from "./events";
+export type { Event, EventResource, EventParams, EventByDetail } from "./events";
 export type { Project } from "./projects";
 export type { Constraints } from "./constraints";
 export type { Rights } from "./rights";

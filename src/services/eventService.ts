@@ -1,7 +1,29 @@
 import { ADEFetcher } from "../utils/fetcher";
 import { parseRGBColor } from "../utils/color";
 import { parseDateFromDDMMYYYY, parseDateFromDDMMYYYYHHMM } from "../utils/date";
-import type { EventParams, EventByDetail } from "../models/timetable";
+import type { EventParams, EventResource, EventByDetail } from "../models/timetable";
+import { Category } from "../models/utils";
+
+/**
+ * Get the events resources
+ * @param resource The resource to parse
+ * @returns A list of event resources (EventResource[])
+*/
+function parseEventsResource(resource: [ { resource: [{ $: { fromWorkflow: string, nodeId: string, nodeOrId: string, quantity: string, category: string, name: string, id: string } }] } ]): EventResource[] {
+    if (!resource[0].resource) {
+        return [];
+    }
+    
+    return resource[0].resource.map(e => ({
+        fromWorkflow: Boolean(e.$.fromWorkflow),
+        nodeId: parseInt(e.$.nodeId, 10),
+        nodeOrId: parseInt(e.$.nodeOrId, 10),
+        quantity: parseInt(e.$.quantity, 10),
+        category: e.$.category as Category,
+        name: e.$.name,
+        id: parseInt(e.$.id, 10),
+    }));
+}
 
 /**
  * Get the events list
@@ -74,7 +96,7 @@ export async function getEvents<T extends number>(fetcher: ADEFetcher, params: E
 
         if (params.detail >= 8) {
             Object.assign(baseEvent, {
-                resources: event.resources, // TODO: Parse resources
+                resources: parseEventsResource(event.resources),
                 additional: event.additional, // TODO: Parse additional
             });
         }
