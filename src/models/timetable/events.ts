@@ -1,5 +1,4 @@
-import { Color } from "../utils";
-import { Resource } from "./resources";
+import { Category, Color } from "../utils";
 
 export interface Event1 {
     id: number;
@@ -45,7 +44,7 @@ export interface Event7 extends Event6 {
 }
 
 export interface Event8 extends Event7 {
-    resources: Resource[];
+    resources: EventResource[];
     additional: Additional;
 }
 
@@ -69,6 +68,16 @@ export interface EventParams {
     days?: number;
     date?: string;
 };
+
+export interface EventResource {
+    fromWorkflow: boolean;
+    nodeId: number;
+    nodeOrId: number;
+    quantity: number;
+    category: Category;
+    name: string;
+    id: number;
+}
 
 export type Event = Event1 | Event2 | Event3 | Event4 | Event5 | Event6 | Event7 | Event8;
 
