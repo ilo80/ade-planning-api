@@ -69,4 +69,4 @@ export class ADEPlanningAPI {
     }
 }
 
-export type { Credentials, Project, Event, Memberships, AllMembers, Counters, Constraints, Cost, Activity, Rights, Resource };
+export type { Project, EventByDetail, ResourceByDetail, ActivityByDetail, Event, Activity, Resource, Memberships, AllMembers, Counters, Constraints, Cost, Rights, Credentials }; // Export types for external use
