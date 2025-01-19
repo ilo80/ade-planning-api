@@ -39,7 +39,7 @@ main();
 ```ts
 import { ADEPlanningAPI } from 'ade-planning-api';
 
-export const initializeAPI = async () => {
+export const main = async () => {
     const api = new ADEPlanningAPI("https://example.com");
 
     await api.initializeSession({ username: "username", password: "password" });
