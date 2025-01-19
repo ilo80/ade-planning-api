@@ -12,15 +12,50 @@ An unofficial wrapper written in TypeScript for interacting with ADE Planning AP
 > This package is unofficial and in no way affiliated with [Adesoft](https://www.adesoft.com/) company. Use it at your own risk.
 
 ## 📥 Downloads
-*Coming soon...*
+You can install the `ade-planning-api` package via npm. Simply run the following command :
+```bash
+npm install ade-planning-api
+```
 
 ## ⚙️ Uses
-*Coming soon...*
+### Retrieve projects
+```ts
+import { ADEPlanningAPI } from 'ade-planning-api';
 
-## 📚 Documentation
-*Coming soon...*
+const main = async () => {
+    const api = new ADEPlanningAPI("https://example.com");
 
-## 🙏 Special Thanks 
+    await api.initializeSession({ username: "username", password: "password" });
+
+    const projects = await api.getProjects(); // Get all projects
+
+    console.log(projects);
+
+};
+
+main();
+```
+### Retrieve events at a specified Date
+```ts
+import { ADEPlanningAPI } from 'ade-planning-api';
+
+export const initializeAPI = async () => {
+    const api = new ADEPlanningAPI("https://example.com");
+
+    await api.initializeSession({ username: "username", password: "password" });
+
+    const projets = await api.getProjects(); // Get all projects
+    await api.setProject(projets[0]); // Set to the first project
+
+    const events = await api.getEvents({ date: "1/19/2025", detail: 8 }); // Get all events for a specific date
+
+    console.log(events);
+};
+
+main();
+```
+
+## 🙏 Acknowledgement 
 Many thanks to [s-celles](https://github.com/s-celles/) for documenting ADE Planning's internal API in the [pyade](https://github.com/s-celles/pyade) package.
 
 ## 📜 License
