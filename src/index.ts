@@ -4,6 +4,7 @@ import type { Project, Event, EventParams, EventByDetail, Memberships, AllMember
 import { getProjects, setProject } from "./services/projectService";
 import { getEvents } from "./services/eventService";
 import { getResources } from "./services/resourceService";
+import { getActivities } from "./services/activityService";
 
 export class ADEPlanningAPI {
     private fetcher: ADEFetcher;
@@ -61,11 +62,21 @@ export class ADEPlanningAPI {
     }
     
     /**
+     * Get the list of resources.
      * @param params The parameters to pass to the API.
      * @returns A promise that resolves with the list of resources.
      */
     async getResources<T extends number>(params: ResourceParams & { detail: T }): Promise<ResourceByDetail<T>[]> {
         return await getResources(this.fetcher, params);
+    }
+
+    /**
+     * Get the list of activities.
+     * @param params The parameters to pass to the API
+     * @returns A promise that resolves with the list of activities.
+     */
+    async getActivities<T extends number>(params: ActivityParams & { detail: T }): Promise<ActivityByDetail<T>[]> {
+        return await getActivities(this.fetcher, params);
     }
 }
 
