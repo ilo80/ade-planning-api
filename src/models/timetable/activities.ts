@@ -49,7 +49,7 @@ export interface Activity8 extends Activity7 {
 }
 
 export interface Activity9 extends Activity8 {
-    weigth: number;
+    weight: number;
     seatsLeft: number;
     maxSeats: number;
     info: string;
