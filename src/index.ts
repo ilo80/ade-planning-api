@@ -62,6 +62,7 @@ export class ADEPlanningAPI {
     }
     
     /**
+     * Get the list of resources.
      * @param params The parameters to pass to the API.
      * @returns A promise that resolves with the list of resources.
      */
@@ -69,6 +70,11 @@ export class ADEPlanningAPI {
         return await getResources(this.fetcher, params);
     }
 
+    /**
+     * Get the list of activities.
+     * @param params The parameters to pass to the API
+     * @returns A promise that resolves with the list of activities.
+     */
     async getActivities<T extends number>(params: ActivityParams & { detail: T }): Promise<ActivityByDetail<T>[]> {
         return await getActivities(this.fetcher, params);
     }

@@ -3,6 +3,12 @@ import type { ActivityParams, ActivityByDetail } from "../models/timetable";
 import { parseDateFromDDMMYYYYHHMM } from "../utils/date";
 import { parseRGBColor } from "../utils/color";
 
+/**
+ * Get the activities list
+ * @param fetcher ADEFetcher instance
+ * @param params The parameters to pass to the API
+ * @returns A list of activities
+ */
 export async function getActivities<T extends number>(fetcher: ADEFetcher, params: ActivityParams & { detail: T }): Promise<ActivityByDetail<T>[]> {
     const data = await fetcher.get({  function: 'getActivities', ...params }) as { activities?: { activity: any[] } };
 
